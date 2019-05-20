@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="app.one.my.oneapp">
-    <uses-permission android:name="android.permission.VIBRATE"/>
 
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
             android:allowBackup="true"
@@ -14,16 +14,30 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Timer"
-                  android:parentActivityName=".MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.RUN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-                <!--&lt;!&ndash;todo what is it?&ndash;&gt;-->
-            <!--</intent-filter>-->
+        <activity
+                android:name=".all.Timer"
+                android:parentActivityName=".MainActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.RUN"/> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- &lt;!&ndash;todo what is it?&ndash;&gt; -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+                android:name=".TraningOfDay"
+                android:label="@string/title_activity_main2"
+                android:parentActivityName=".TraningOfDay"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="app.one.my.oneapp.MainActivity"/>
+        </activity>
+        <activity android:name=".UpStairsActivity">
         </activity>
     </application>
 

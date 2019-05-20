@@ -1,110 +1,80 @@
 package app.one.my.oneapp;
 
-import android.app.Service;
 import android.content.Intent;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.TableLayout;
 
-import java.util.Date;
+//import java.time.DayOfWeek;
+import java.util.Calendar;
+import java.util.Locale;
+
 
 public class MainActivity extends AppCompatActivity {
-    Button button;
-    Button button2;
-    Button button3;
-    Button button4;
-    TextView textView;
-    CountDownTimer timer;
-    ProgressBar progressBar;
-    Date date;
+
+
+    Calendar c = Calendar.getInstance(Locale.getDefault());
+    int startDay;
+    int today = c.get(Calendar.DAY_OF_YEAR);// получаем текущий день в году
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
-        button2 = findViewById(R.id.button2);
-        button3 = findViewById(R.id.button3);
-        button4 = findViewById(R.id.button4);
-        textView = findViewById(R.id.textView);
-        progressBar = findViewById(R.id.progressBar);
-        date = new Date();
-        date.getTime();
 
-//first version onClick with privet class
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Timer timer = new Timer(60000, 1000);
-//                timer.start();
-//                button.setText("Done");
-//
-//            }
-//        });
+        createStartButton();
+        createNextButton();
+
 
     }
 
-    private void vibrateOnce() {
-        android.os.Vibrator vibrator = (android.os.Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
-        vibrator.vibrate(3000);
-    }
+    private void createNextButton() { //todo создать новые кнопки в зависимости от того сколько дней прошло
 
-    public void setTimer(View view) {
-        Timer timer = new Timer(6000, 1000);
-        timer.start();
-//        this.button.setText("Done"); todo make set "Done" on this button or other
-    }
+        for (int i = 0; i < 5; i++) { // сравнение текущего для и начаьного
+            TableLayout tableLayout = findViewById(R.id.tableLayout);
+            final Button button1 = new Button(this);
 
-    public void openNewWindowsTimer(View view) {
-        Intent intent = new Intent(this, Timer.class);
-        try {
-            startActivity(intent);
-        //todo it is not works(
 
-        } catch (Exception e) {
-            textView.setText("5 button is not work");
-
+            button1.setText("Day "+ today +i);
+            button1.setId(startDay);
+            tableLayout.addView(button1);
         }
 
+
+
     }
 
-    public class Timer extends CountDownTimer {
+    private void createStartButton() {
+        TableLayout tableLayout = findViewById(R.id.tableLayout);
+        final Button button = new Button(this);
 
-        /**
-         * @param millisInFuture    The number of millis in the future from the call
-         *                          to {@link #start()} until the countdown is done and {@link #onFinish()}
-         *                          is called.
-         * @param countDownInterval The interval along the way to receive
-         *                          {@link #onTick(long)} callbacks.
-         */
-        public Timer(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
-        }
+        button.setText("GO");
 
-        @Override
-        public void onTick(long millisUntilFinished) {
-            int progress = (int) millisUntilFinished/1000;
-            textView.setText("time "+progress);
-            progressBar.setProgress(progress);
 
-        }
-
-        @Override
-        public void onFinish() {
-            textView.setText("Go");
-            vibrateOnce();
-        }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                trangingOfDay(); // не понимаю какой нужен параметр
+                startDay = c.get(Calendar.DAY_OF_YEAR); // todo  каждый раз будет перезаписываться
+                button.setText("Day "+startDay);
+            }
+        });
+        tableLayout.addView(button);
     }
 
-    //Date
 
+    public void trangingOfDay(View view) {
+        Intent intent = new Intent(this, TraningOfDay.class);
+        startActivity(intent);
+    }
 
+    public void startUpStairsActivity(View view) {
+        Intent intent = new Intent(this, UpStairsActivity.class);
+        startActivity(intent);
 
-
-
-
+    }
 }

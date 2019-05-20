@@ -1,4 +1,4 @@
-package app.one.my.oneapp;
+package app.one.my.oneapp.all;
 
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import app.one.my.oneapp.R;
 
 public class Timer extends AppCompatActivity {
 
