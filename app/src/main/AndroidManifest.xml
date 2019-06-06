@@ -37,7 +37,9 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="app.one.my.oneapp.MainActivity"/>
         </activity>
-        <activity android:name=".UpStairsActivity">
+        <activity android:name=".UpStairsTraining">
+        </activity>
+        <activity android:name=".CircleTraining">
         </activity>
     </application>
 
