@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         createNextButton ( );
 
 
+
     }
 
     //для сохранея данных нужно переопределить методы в onPause
@@ -112,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void startCircleActivity(View view) {
         Intent intent = new Intent ( this, CircleTraining.class );
+        startActivity ( intent );
+
+    }
+
+    public void startExercises(View view) {
+        Intent intent = new Intent ( this, ExercisesTraining.class );
         startActivity ( intent );
 
     }
