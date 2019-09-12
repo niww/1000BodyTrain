@@ -2,8 +2,9 @@ package app.one.my.oneapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         createNextButton ( );
 
 
-
     }
 
     //для сохранея данных нужно переопределить методы в onPause
@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void createNextButton() { //todo создать новые кнопки в зависимости от того сколько дней прошло
+    //todo создать новые кнопки в зависимости от того сколько дней прошло
+    private void createNextButton() {
 
         for (int i = 0; i < 5; i++) { // сравнение текущего для и начаьного
             TableLayout tableLayout = findViewById ( R.id.tableLayout );
@@ -119,6 +120,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void startExercises(View view) {
         Intent intent = new Intent ( this, ExercisesTraining.class );
+        startActivity ( intent );
+
+    }
+
+    public void dataTime(View view) {
+        Intent intent = new Intent ( this, DataTime.class );
+        startActivity ( intent );
+
+    }
+
+    public void makeFoto(View view) {
+        Intent intent = new Intent ( this, MakePhoto.class );
         startActivity ( intent );
 
     }
