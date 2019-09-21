@@ -135,9 +135,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity ( intent );
 
     }
-    public void timer(View view) {
-        Intent intent = new Intent ( this, TimerActivity.class );
-        startActivity ( intent );
 
-    }
 }

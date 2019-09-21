@@ -6,10 +6,11 @@
                 tools:context=".TimerActivity">
 
     <ProgressBar
-            style="?android:attr/progressBarStyle"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/progressBarOfTimer"/>
+            android:id="@+id/progressBarOfTimer"
+    />
 
 </RelativeLayout>
 

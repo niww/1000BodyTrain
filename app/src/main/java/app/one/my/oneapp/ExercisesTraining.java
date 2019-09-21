@@ -1,6 +1,7 @@
 package app.one.my.oneapp;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +17,7 @@ public class ExercisesTraining extends AppCompatActivity {
     Button buttonForExercises;
     TextView textView;
     EditText editText;
-
     TextInputEditText textInputEditText;
-
     LinearLayout linearLayout;
     LinearLayout llBody;
     LinearLayout verticalLinearLayoutForExercises;
@@ -148,5 +147,10 @@ public class ExercisesTraining extends AppCompatActivity {
 
             }
         } );
+    }
+    public void timer(View view) {
+        Intent intent = new Intent ( this, TimerActivity.class );
+        startActivity ( intent );
+
     }
 }
