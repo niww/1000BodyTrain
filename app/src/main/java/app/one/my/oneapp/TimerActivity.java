@@ -5,16 +5,19 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class TimerActivity extends AppCompatActivity {
     myTimer timer;
     ProgressBar progressBar;
+    TextView textViewTimeOfTimer;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.timer );
         progressBar = findViewById ( R.id.progressBarOfTimer );
+        textViewTimeOfTimer = findViewById ( R.id.textViewTimeOfTimer );
 
         timer = new myTimer ( 5000, 1000 );
         timer.start ( );
@@ -49,6 +52,7 @@ public class TimerActivity extends AppCompatActivity {
         @Override
         public void onTick(long millisUntilFinished) {
             int progress = (int) (millisUntilFinished / 1000);
+            textViewTimeOfTimer.setText ( "Time "+ progress );
             progressBar.setMax ( 10000 );
             progressBar.setProgress ( progressBar.getMax ( ) - progressBar.getMax ( ) / progress ); //todo create progressbar
         }
