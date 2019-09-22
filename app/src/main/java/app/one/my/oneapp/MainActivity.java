@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText ( R.string.title_notifications );
                     return true;
                     case R.id.navigation_siting:
-                    mTextMessage.setText ( R.string.Siting );
+                    startExercises ( this );
                     return true;
             }
             return false;
@@ -48,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById ( R.id.message );
         BottomNavigationView navigation = (BottomNavigationView) findViewById ( R.id.navigation );
         navigation.setOnNavigationItemSelectedListener ( mOnNavigationItemSelectedListener );
+    }
+    public void startExercises(BottomNavigationView.OnNavigationItemSelectedListener view) {
+        Intent intent = new Intent ( this, ExercisesTraining.class );
+        startActivity ( intent );
+
     }
 
 }
