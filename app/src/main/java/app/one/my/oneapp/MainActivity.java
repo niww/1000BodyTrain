@@ -43,9 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText ( R.string.title_dashboard );
                     return true;
                 case R.id.navigation_notifications:
-//                    mTextMessage.setText ( R.string.title_notifications );
-//                    if ( onSaveInstanceState (  ); ) {
-//                    }
+                    startCalendar ( this );
                     return true;
                 case R.id.navigation_siting:
                     startExercises ( this );
@@ -57,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void startExercises(BottomNavigationView.OnNavigationItemSelectedListener view) {
         Intent intent = new Intent ( this, ExercisesTraining.class );
+        startActivity ( intent );
+
+    }
+    public void startCalendar(BottomNavigationView.OnNavigationItemSelectedListener view) {
+        Intent intent = new Intent ( this, Calendar.class );
         startActivity ( intent );
 
     }
