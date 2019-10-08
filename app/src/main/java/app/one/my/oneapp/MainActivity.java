@@ -1,5 +1,6 @@
 package app.one.my.oneapp;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.annotation.NonNull;
 
 
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -28,39 +31,54 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener ( ) {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment = null;
             switch (item.getItemId ( )) {
                 case R.id.navigation_home:
-                    mTextMessage.setText ( R.string.title_home );
+                    fragment = new CalendarFragment ( );
+                    break;
 
-                    return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText ( R.string.title_dashboard );
-                    return true;
-                case R.id.navigation_notifications:
-                    startCalendar ( this );
-                    return true;
+//                    mTextMessage.setText ( R.string.title_dashboard );
+//                    return true;
+                    fragment = new TrainingFragment ( );
+                    break;
+//                case R.id.navigation_notifications:
+////                    startCalendar ( this );
+//                    return true;
                 case R.id.navigation_siting:
-                    startExercises ( this );
-                    return true;
+                    fragment = new SittingFragment ( );
+                    break;
             }
-            return false;
+            return loadFragment ( fragment );
         }
     };
 
-    public void startExercises(BottomNavigationView.OnNavigationItemSelectedListener view) {
-        Intent intent = new Intent ( this, ExercisesTraining.class );
-        startActivity ( intent );
-
+    private boolean loadFragment(Fragment fragment) {
+        if ( fragment != null ) {
+            getSupportFragmentManager ( )
+                    .beginTransaction ( )
+                    .replace ( R.id.fragmentLayout, fragment )
+                    .commit ( );
+        return true;
+        }
+        return false;
     }
-    public void startCalendar(BottomNavigationView.OnNavigationItemSelectedListener view) {
-        Intent intent = new Intent ( this, CalendarOfTraining.class );
-        startActivity ( intent );
 
-    }
+//    public void startExercises(BottomNavigationView.OnNavigationItemSelectedListener view) {
+//        Intent intent = new Intent ( this, ExercisesTraining.class );
+//        startActivity ( intent );
+//
+//    }
+//    public void startCalendar(BottomNavigationView.OnNavigationItemSelectedListener view) {
+//        Intent intent = new Intent ( this, CalendarOfTraining.class );
+//        startActivity ( intent );
+//
+//    }
 
 }
