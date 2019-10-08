@@ -23,11 +23,7 @@
                     android:layout_width="wrap_content"
                     android:id="@+id/spinnerOfExercises"
                     android:entries="@array/exercises"
-                    android:layout_height="wrap_content"
-
-            >
-
-
+                    android:layout_height="wrap_content">
             </android.support.v7.widget.AppCompatSpinner>
             <Button
                     android:text="add"
@@ -55,12 +51,9 @@
         <Button
                 android:text="StartTraining"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/buttonOfStartTraining"/>
-        <Button
-                android:text="StartTimer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/buttonOfStartTimer"
-                android:onClick="timer"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonOfStartTraining"
+                android:onClick="startExercisesTraining"
         />
     </LinearLayout>
 

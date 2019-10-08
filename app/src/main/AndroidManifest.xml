@@ -40,7 +40,7 @@
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="app.one.my.oneapp.MainActivity"/>
+                    android:value="app.one.my.oneapp.MainActivity2"/>
         </activity>
         <activity android:name=".UpStairsTraining">
         </activity>
@@ -52,8 +52,13 @@
         </activity>
         <activity android:name=".MakePhoto">
         </activity>
+        <activity android:name=".CalendarOfTraining">
+        </activity>
         <activity android:name=".TimerActivity">
         </activity>
+        <activity android:name=".ExercisesTrainingProcess">
+        </activity>
+
 
 
         <!--<activity-->

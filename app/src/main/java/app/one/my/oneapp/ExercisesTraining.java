@@ -2,12 +2,17 @@ package app.one.my.oneapp;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
+
+import java.util.ArrayList;
 
 public class ExercisesTraining extends AppCompatActivity {
     Button button1;
@@ -22,9 +27,14 @@ public class ExercisesTraining extends AppCompatActivity {
     LinearLayout llBody;
     LinearLayout verticalLinearLayoutForExercises;
     LinearLayout horizontalLinearLayoutForExercises;
+    ArrayList arrayList;
+    String[] arrayOfExercises;
+
+
     ProgressBar progressBar;
     Dialog dialog;
     AppCompatSpinner appCompatSpinner;
+    SpinnerAdapter spinnerAdapter;
 
 
 
@@ -42,6 +52,7 @@ public class ExercisesTraining extends AppCompatActivity {
 //        horizontalLinearLayoutForExercises = findViewById ( R.id.horizontalLayoutForExercises );
         llBody = findViewById ( R.id.llBody );
         buttonForExercises = findViewById ( R.id.bottomForAddExercises );
+
 
 
     }
@@ -89,6 +100,7 @@ public class ExercisesTraining extends AppCompatActivity {
 
     }
 //add exercises to list
+//todo  delete item from spinner when it was chosen. I need to use Adapter ?????
 
     public void functionForAddExercises(View view) {
         int id =0;
@@ -98,6 +110,7 @@ public class ExercisesTraining extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 horizontalLinearLayoutForExercises = new LinearLayout ( ExercisesTraining.this );
+                horizontalLinearLayoutForExercises.setTag ( appCompatSpinner.getSelectedItem ().toString () );
                 textView = new TextView ( ExercisesTraining.this );
                 buttonMinus = new Button ( ExercisesTraining.this );
                 buttonMinus.setTag ( appCompatSpinner.getSelectedItem ().toString () );
@@ -130,7 +143,7 @@ public class ExercisesTraining extends AppCompatActivity {
                     }
                 } );
 
-                buttonPlus.setText ( "+" );
+                buttonPlus.setText ( "+ " + horizontalLinearLayoutForExercises.getTag () );
 
                     verticalLinearLayoutForExercises.addView ( horizontalLinearLayoutForExercises );
                     horizontalLinearLayoutForExercises.addView ( textView );
@@ -138,7 +151,8 @@ public class ExercisesTraining extends AppCompatActivity {
                     horizontalLinearLayoutForExercises.addView ( textInputEditText );
                     horizontalLinearLayoutForExercises.addView ( buttonPlus );
 
-//скрыть item при выборе его
+
+//todo скрыть item при выборе его
                 if ( textView.getTag () == appCompatSpinner.getSelectedItem ().toString () ) {
 //                    appCompatSpinner.removei
 
@@ -150,6 +164,14 @@ public class ExercisesTraining extends AppCompatActivity {
     }
     public void timer(View view) {
         Intent intent = new Intent ( this, TimerActivity.class );
+        startActivity ( intent );
+
+    }
+
+    public void startExercisesTraining(View view) {
+        Intent intent = new Intent ( this, ExercisesTrainingProcess.class );
+        //todo попробовать записывать все тренироваки в массив и передать его
+        intent.putExtra ( "Name",  appCompatSpinner.getSelectedItem ().toString () );
         startActivity ( intent );
 
     }
