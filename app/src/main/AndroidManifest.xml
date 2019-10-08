@@ -52,7 +52,7 @@
         </activity>
         <activity android:name=".MakePhoto">
         </activity>
-        <activity android:name=".Calendar">
+        <activity android:name=".CalendarOfTraining">
         </activity>
         <activity android:name=".TimerActivity">
         </activity>

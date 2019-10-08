@@ -2,7 +2,6 @@ package app.one.my.oneapp;
 
 import android.content.Intent;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void startCalendar(BottomNavigationView.OnNavigationItemSelectedListener view) {
-        Intent intent = new Intent ( this, Calendar.class );
+        Intent intent = new Intent ( this, CalendarOfTraining.class );
         startActivity ( intent );
 
     }
